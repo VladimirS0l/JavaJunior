@@ -22,7 +22,8 @@ import java.util.stream.Collectors;
 
 public class HWLesson1 {
     public static void main(String[] args) {
-//        randomNumbers();
+        randomNumbers();
+        System.out.println("-".repeat(40) + "\n");
         tasksWithEmployee();
     }
 
@@ -79,7 +80,7 @@ public class HWLesson1 {
                 .filter(c -> c.getSalary() < 10000)
                 .map(c -> (c.getSalary() * 1.2))
                 .forEach(System.out::println);
-        System.out.println("-".repeat(10));
+        System.out.println("-".repeat(40));
 
         //Из списка сотрудников с помощью стрима создать Map<String,
         // List<Employee>> с отделами и сотрудниками внутри отдела
