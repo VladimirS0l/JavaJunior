@@ -12,11 +12,11 @@ public class MyTest {
 
     @BeforeEach
     public void init() {
-        System.out.println("Database load");
         for (int i = 0; i < 10; i++) {
             personRepository.people.add(new Person(i, "Name #" + i,
                     ThreadLocalRandom.current().nextInt(100)));
         }
+        System.out.println("Database load");
     }
 
     @Test
@@ -54,6 +54,4 @@ public class MyTest {
     void runAfterEach() {
         System.out.println("End program");
     }
-
-
 }

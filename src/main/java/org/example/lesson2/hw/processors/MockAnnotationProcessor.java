@@ -11,8 +11,20 @@ public class MockAnnotationProcessor {
         for (Field field : clazz.getDeclaredFields()) {
             if (field.isAnnotationPresent(Mock.class)) {
                 field.setAccessible(true);
-                field.set(target, new PersonRepository());
+                Class<?> fieldType = field.getType();
+                Object mockObject = createMockObject(fieldType);
+                field.set(target, mockObject);
             }
         }
     }
+
+    private static Object createMockObject(Class<?> clazz) {
+        try {
+            return clazz.newInstance();
+        } catch (InstantiationException | IllegalAccessException e) {
+            throw new RuntimeException("Не удалось создать мок объект для класса: "
+                    + clazz.getName(), e);
+        }
+    }
+
 }

@@ -10,10 +10,9 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class TestAnnotationProcessor {
-    public static void process(Object target) throws IllegalAccessException {
+    public static void process(Object target) {
         Class<?> clazz = target.getClass();
         Map<Integer, Method> treeMap = new TreeMap<>();
-
         for (Method method : clazz.getDeclaredMethods()) {
             if (method.isAnnotationPresent(Test.class)) {
                 checkTestMethod(method);
@@ -24,7 +23,6 @@ public class TestAnnotationProcessor {
                 }
             }
         }
-
         treeMap.values().forEach(it -> runTest(it, target));
     }
 
