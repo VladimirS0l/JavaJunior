@@ -3,6 +3,7 @@ package org.example.lesson4.hw;
 import org.example.lesson4.hw.entity.Author;
 import org.example.lesson4.hw.entity.Book;
 import org.example.lesson4.hw.entity.BookAdditional;
+import org.example.lesson4.hw.entity.Car;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -59,25 +60,30 @@ public class Lesson4Main {
         //Task 3
         //Чтобы не портить работоспособность Задач 1,2 была создана доп.сущность книги BookAdditional
 
-        TaskThreeJPA taskThreeJPA = new TaskThreeJPA();
-        Author author1 = new Author(null, "AuthorJpa#1", new ArrayList<>());
-        Author author2 = new Author(null, "AuthorJpa#2", new ArrayList<>());
-        taskThreeJPA.saveAuthor(author1);
-        taskThreeJPA.saveAuthor(author2);
+//        TaskThreeJPA taskThreeJPA = new TaskThreeJPA();
+//        Author author1 = new Author(null, "AuthorJpa#1", new ArrayList<>());
+//        Author author2 = new Author(null, "AuthorJpa#2", new ArrayList<>());
+//        taskThreeJPA.saveAuthor(author1);
+//        taskThreeJPA.saveAuthor(author2);
+//
+//        for (int i = 0; i < 10; i++) {
+//            Long id = ThreadLocalRandom.current().nextLong(1, 3);
+//            taskThreeJPA.saveBookAdd(
+//                    new BookAdditional(null, "BookAdd#"+i, new Author()), id);
+//        }
+//
+//        List<BookAdditional> allBooksByAuthorId = taskThreeJPA.findAllByAuthorId(1L);
+//        for (BookAdditional book: allBooksByAuthorId) {
+//            System.out.println("Book: id-"
+//                    + book.getId() + ", book name-"
+//                    + book.getNameBook() + ", author-"
+//                    + book.getAuthor().getAuthorName());
+//        }
 
-        for (int i = 0; i < 10; i++) {
-            Long id = ThreadLocalRandom.current().nextLong(1, 3);
-            taskThreeJPA.saveBookAdd(
-                    new BookAdditional(null, "BookAdd#"+i, new Author()), id);
-        }
-
-        List<BookAdditional> allBooksByAuthorId = taskThreeJPA.findAllByAuthorId(1L);
-        for (BookAdditional book: allBooksByAuthorId) {
-            System.out.println("Book: id-"
-                    + book.getId() + ", book name-"
-                    + book.getNameBook() + ", author-"
-                    + book.getAuthor().getAuthorName());
-        }
+        //Task 4
+        TaskFourJpa taskFourJpa = new TaskFourJpa();
+        Car car = new Car(-1, "BMW", List.of("Vladimir", "Viktoria"));
+        System.out.println(taskFourJpa.saveCar(car).getModel());
     }
 
 
